@@ -106,16 +106,18 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .ref { color: var(--mist); font-size: .92rem; }
 
 /* ---------- Hero ---------- */
-.hero { position: relative; isolation: isolate; padding: 0; min-height: min(86svh, 720px); display: flex; align-items: flex-end; }
+/* Compact: the title sits in the sky at the top, the mountain and river show through the middle, buttons sit at the bottom. */
+.hero { position: relative; isolation: isolate; padding: 0; min-height: min(64svh, 460px); display: flex; }
 .hero-img { position: absolute; inset: 0; z-index: -2; }
-.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%; }
 .hero::after {
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(180deg, rgba(28,20,17,.25) 0%, rgba(28,20,17,.35) 40%, rgba(28,20,17,.92) 78%, var(--dusk) 100%);
+  background: linear-gradient(180deg, rgba(28,20,17,.55) 0%, rgba(28,20,17,.15) 38%, rgba(28,20,17,.25) 62%, rgba(28,20,17,.85) 88%, var(--dusk) 100%);
 }
-.hero .wrap { padding-top: 120px; padding-bottom: 36px; }
-.hero h1 { text-shadow: 0 2px 30px rgba(0,0,0,.45); }
-.hero p { font-size: 1.15rem; max-width: 34ch; text-shadow: 0 1px 12px rgba(0,0,0,.5); }
+.hero .wrap { display: flex; flex-direction: column; justify-content: space-between; width: 100%; padding-top: 26px; padding-bottom: 22px; }
+.hero h1 { font-size: clamp(2rem, 1.5rem + 2.4vw, 3.2rem); margin-bottom: .3em; text-shadow: 0 2px 24px rgba(0,0,0,.55); }
+.hero p { font-size: 1.08rem; max-width: 34ch; margin-bottom: 0; text-shadow: 0 1px 12px rgba(0,0,0,.6); }
+.hero .btns { margin-top: 18px; }
 
 .page-hero { padding: 36px 0 12px; }
 .page-hero p { color: var(--mist); font-size: 1.08rem; }
@@ -295,7 +297,8 @@ blockquote p { margin-bottom: .4em; }
 @media (min-width: 64rem) {
   .site-head { display: flex; align-items: center; justify-content: space-between; }
   .tabs { mask-image: none; padding: 10px var(--gutter); }
-  .hero .wrap { padding-bottom: 64px; }
+  .hero { min-height: min(60svh, 540px); }
+  .hero .wrap { padding-top: 48px; padding-bottom: 40px; }
   .hero p { max-width: 42ch; }
   .stages { grid-template-columns: repeat(3, 1fr); }
   .day-list { grid-template-columns: repeat(3, 1fr); }
@@ -327,3 +330,7 @@ blockquote p { margin-bottom: .4em; }
 
 /* Qur'an / hadith Arabic above the English evidence on the Detailed example page */
 .arabic.quran { font-size: 1.45rem; line-height: 2.1; text-align: right; margin: 0 0 .5em; }
+
+/* Video testimonial: portrait phone video, capped so it never fills a whole phone screen */
+.vquote video { display: block; width: 100%; max-width: 340px; max-height: 70svh; aspect-ratio: 9 / 16; object-fit: cover; margin: 0 auto 12px; border-radius: 12px; background: #000; }
+.vquote figcaption { text-align: center; }
