@@ -106,18 +106,22 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .ref { color: var(--mist); font-size: .92rem; }
 
 /* ---------- Hero ---------- */
-/* Compact: the title sits in the sky at the top, the mountain and river show through the middle, buttons sit at the bottom. */
-.hero { position: relative; isolation: isolate; padding: 0; min-height: min(64svh, 460px); display: flex; }
+/* Title in the sky at the top (dark scrim behind it for legibility); the prayer mat stays visible;
+   the bottom fades into the page colour so the photo melts into the rest of the site. */
+.hero { position: relative; isolation: isolate; padding: 0; min-height: min(68svh, 520px); display: flex; align-items: flex-start; }
 .hero-img { position: absolute; inset: 0; z-index: -2; display: block; }
-.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 70%; }
 .hero::after {
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(180deg, rgba(28,20,17,.55) 0%, rgba(28,20,17,.15) 38%, rgba(28,20,17,.25) 62%, rgba(28,20,17,.85) 88%, var(--dusk) 100%);
+  background:
+    linear-gradient(180deg, rgba(20,14,12,.66) 0%, rgba(20,14,12,.38) 24%, rgba(20,14,12,0) 44%),
+    linear-gradient(0deg, var(--dusk) 0%, rgba(28,20,17,.6) 14%, rgba(28,20,17,0) 34%);
 }
-.hero .wrap { display: flex; flex-direction: column; justify-content: space-between; width: 100%; padding-top: 26px; padding-bottom: 22px; }
-.hero h1 { font-size: clamp(2rem, 1.5rem + 2.4vw, 3.2rem); margin-bottom: .3em; text-shadow: 0 2px 24px rgba(0,0,0,.55); }
-.hero p { font-size: 1.08rem; max-width: 34ch; margin-bottom: 0; text-shadow: 0 1px 12px rgba(0,0,0,.6); }
-.hero .btns { margin-top: 18px; }
+.hero .wrap { width: 100%; padding-top: 22px; padding-bottom: 22px; }
+.hero h1 { font-size: clamp(2.1rem, 1.5rem + 2.6vw, 3.4rem); font-weight: 800; color: #fffaf2; margin-bottom: .25em; text-shadow: 0 2px 4px rgba(0,0,0,.55), 0 4px 28px rgba(0,0,0,.6); }
+.hero p { font-size: 1.1rem; font-weight: 600; color: #fffaf2; max-width: 34ch; margin-bottom: 0; text-shadow: 0 1px 3px rgba(0,0,0,.7), 0 2px 16px rgba(0,0,0,.6); }
+.hero-cta { margin-top: -8px; }
+.hero-cta .btns { margin-top: 0; }
 
 .page-hero { padding: 36px 0 12px; }
 .page-hero p { color: var(--mist); font-size: 1.08rem; }
@@ -297,8 +301,9 @@ blockquote p { margin-bottom: .4em; }
 @media (min-width: 64rem) {
   .site-head { display: flex; align-items: center; justify-content: space-between; }
   .tabs { mask-image: none; padding: 10px var(--gutter); }
-  .hero { min-height: min(60svh, 540px); }
-  .hero .wrap { padding-top: 48px; padding-bottom: 40px; }
+  .hero { min-height: min(72svh, 640px); }
+  .hero .wrap { padding-top: 44px; }
+  .hero-cta .btns { flex-direction: row; }
   .hero p { max-width: 42ch; }
   .stages { grid-template-columns: repeat(3, 1fr); }
   .day-list { grid-template-columns: repeat(3, 1fr); }

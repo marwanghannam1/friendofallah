@@ -16,8 +16,8 @@ document.addEventListener("click", (e) => {
 const cur = document.querySelector('.tabs a[aria-current="page"]');
 if (cur) cur.scrollIntoView({ block: "nearest", inline: "center" });
 
-// On pages with a big hero (home), hide the sticky join bar while the hero's own buttons are on screen.
-const hero = document.querySelector(".hero");
+// On the home page, hide the sticky join bar while the buttons under the hero are on screen.
+const hero = document.querySelector(".hero-cta") || document.querySelector(".hero");
 const bar = document.querySelector(".join-bar");
 if (hero && bar && "IntersectionObserver" in window) {
   new IntersectionObserver(([e]) => bar.classList.toggle("hide", e.isIntersecting), { threshold: 0.15 }).observe(hero);
