@@ -16,8 +16,8 @@
   --radius-lg: 22px;
   --radius-sm: 12px;
   --gutter: max(16px, env(safe-area-inset-left));
-  --font-display: "Nunito", "Segoe UI", system-ui, sans-serif;
-  --font-body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Segoe UI", system-ui, sans-serif;
   --font-arabic: "Amiri", "Traditional Arabic", serif;
   color-scheme: dark;
 }
