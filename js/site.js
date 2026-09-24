@@ -12,9 +12,19 @@ document.addEventListener("click", (e) => {
   box.replaceChildren(f);
 });
 
-// Keep the active tab visible in the scrolling tab strip on phones.
-const cur = document.querySelector('.tabs a[aria-current="page"]');
-if (cur) cur.scrollIntoView({ block: "nearest", inline: "center" });
+// Phone menu: the three-line button opens and closes the list of sections.
+const head = document.querySelector(".site-head");
+const menuBtn = document.querySelector(".menu-btn");
+function setMenu(open) {
+  head.classList.toggle("open", open);
+  menuBtn.setAttribute("aria-expanded", String(open));
+  menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+}
+if (menuBtn) {
+  menuBtn.addEventListener("click", () => setMenu(!head.classList.contains("open")));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && head.classList.contains("open")) { setMenu(false); menuBtn.focus(); } });
+  document.addEventListener("click", (e) => { if (head.classList.contains("open") && !head.contains(e.target)) setMenu(false); });
+}
 
 // On the home page, hide the sticky join bar while the buttons under the hero are on screen.
 const hero = document.querySelector(".hero-cta") || document.querySelector(".hero");
