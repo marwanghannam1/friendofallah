@@ -16,8 +16,8 @@
   --radius-lg: 22px;
   --radius-sm: 12px;
   --gutter: max(16px, env(safe-area-inset-left));
-  --font-display: "Fira Sans", "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
-  --font-body: "Fira Sans", "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Segoe UI", system-ui, sans-serif;
   --font-arabic: "Amiri", "Traditional Arabic", serif;
   color-scheme: dark;
 }
