@@ -108,8 +108,8 @@ p { margin: 0 0 1em; max-width: 68ch; }
 /* ---------- Hero ---------- */
 /* Compact: the title sits in the sky at the top, the mountain and river show through the middle, buttons sit at the bottom. */
 .hero { position: relative; isolation: isolate; padding: 0; min-height: min(64svh, 460px); display: flex; }
-.hero-img { position: absolute; inset: 0; z-index: -2; }
-.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%; }
+.hero-img { position: absolute; inset: 0; z-index: -2; display: block; }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
 .hero::after {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(180deg, rgba(28,20,17,.55) 0%, rgba(28,20,17,.15) 38%, rgba(28,20,17,.25) 62%, rgba(28,20,17,.85) 88%, var(--dusk) 100%);
@@ -331,6 +331,11 @@ blockquote p { margin-bottom: .4em; }
 /* Qur'an / hadith Arabic above the English evidence on the Detailed example page */
 .arabic.quran { font-size: 1.45rem; line-height: 2.1; text-align: right; margin: 0 0 .5em; }
 
-/* Video testimonial: portrait phone video, capped so it never fills a whole phone screen */
-.vquote video { display: block; width: 100%; max-width: 340px; max-height: 70svh; aspect-ratio: 9 / 16; object-fit: cover; margin: 0 auto 12px; border-radius: 12px; background: #000; }
-.vquote figcaption { text-align: center; }
+/* Video testimonial: centred card with a portrait phone video, capped so it never fills a whole phone screen */
+.vquote { width: 100%; max-width: 560px; margin-inline: auto; text-align: center; }
+.vquote video { display: block; width: 100%; max-width: 340px; max-height: 70svh; aspect-ratio: 9 / 16; object-fit: cover; margin: 0 auto 14px; border-radius: 12px; background: #000; }
+.vquote figcaption span { display: block; max-width: 44ch; margin: 4px auto 6px; }
+.vquote figcaption a { color: var(--c); font-weight: 700; }
+.vquote .vsum { margin-top: 16px; text-align: left; }
+.vquote .vsum h3 { font-size: 1.15rem; color: var(--c); margin-bottom: .3em; }
+.vquote details { text-align: left; margin-top: 8px; }
