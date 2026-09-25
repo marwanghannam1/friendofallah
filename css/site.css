@@ -362,3 +362,8 @@ blockquote p { margin-bottom: .4em; }
 .vquote .vsum { margin-top: 16px; text-align: left; }
 .vquote .vsum h3 { font-size: 1.15rem; color: var(--c); margin-bottom: .3em; }
 .vquote details { text-align: left; margin-top: 8px; }
+
+/* Reflection journals download box on the Immersion Overview page */
+.journals { margin-top: 18px; border-top: 4px solid var(--gold); }
+.journals h2 { font-size: clamp(1.3rem, 1.1rem + 1vw, 1.7rem); margin-bottom: .4em; }
+.journals .small { font-size: .95rem; margin: 12px 0 0; }
