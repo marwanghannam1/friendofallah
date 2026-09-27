@@ -375,3 +375,11 @@ blockquote p { margin-bottom: .4em; }
 
 /* underlined words inside headings (e.g. "this world") */
 h2 u { text-decoration-thickness: 2px; text-underline-offset: 6px; }
+
+/* ---------- Full programme in other languages ---------- */
+.langs-title { margin: 22px 0 10px; font-size: 1.05rem; }
+.langs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.lang { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 52px; padding: 8px 10px; border-radius: 14px; background: #fff; color: #1c1411; font-weight: 800; text-decoration: none; font-size: 1.02rem; line-height: 1.25; text-align: center; }
+.lang small { font-weight: 600; font-size: .74rem; color: #6f6055; }
+.lang:hover { background: var(--gold); }
+@media (min-width: 40rem) { .langs { grid-template-columns: repeat(4, 1fr); } }
