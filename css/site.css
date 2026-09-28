@@ -123,7 +123,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
 /* ---------- Hero ---------- */
 /* Title in the sky at the top (dark scrim behind it for legibility); the prayer mat stays visible;
    the bottom fades into the page colour so the photo melts into the rest of the site. */
-.hero { position: relative; isolation: isolate; padding: 0; min-height: min(68svh, 520px); display: flex; align-items: flex-start; }
+.hero { position: relative; isolation: isolate; padding: 0; min-height: min(68svh, 520px); display: flex; flex-direction: column; align-items: stretch; }
 .hero-img { position: absolute; inset: 0; z-index: -2; display: block; }
 .hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 70%; }
 .hero::after {
@@ -135,8 +135,9 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .hero .wrap { width: 100%; padding-top: 22px; padding-bottom: 22px; }
 .hero h1 { font-size: clamp(2.1rem, 1.5rem + 2.6vw, 3.4rem); font-weight: 800; color: #fffaf2; margin-bottom: .25em; text-shadow: 0 2px 4px rgba(0,0,0,.55), 0 4px 28px rgba(0,0,0,.6); }
 .hero p { font-size: 1.1rem; font-weight: 600; color: #fffaf2; max-width: 34ch; margin-bottom: 0; text-shadow: 0 1px 3px rgba(0,0,0,.7), 0 2px 16px rgba(0,0,0,.6); }
-.hero p.cohort { margin-top: 14px; font-size: 1.15rem; font-weight: 800; color: #fffaf2; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
-.hero p.promise { margin-top: 12px; font-size: 1.12rem; font-weight: 800; color: var(--ember); max-width: 30ch; text-shadow: 0 0 2px #000, 0 1px 4px rgba(0,0,0,.95), 0 2px 18px rgba(0,0,0,.9), 0 0 32px rgba(0,0,0,.6); }
+/* the introduction video sits over the prayer mat at the bottom of the photo */
+.hero-video { width: 100%; margin-top: auto; padding-top: 8px; padding-bottom: 18px; }
+.hero-video .yt { max-width: 600px; margin: 0 auto; box-shadow: 0 18px 50px -12px rgba(0,0,0,.75), 0 0 0 1px rgba(255,250,242,.18); }
 .hero-cta { position: relative; z-index: 2; padding-top: 18px; }
 .hero-cta .btns { margin-top: 0; }
 
@@ -324,7 +325,8 @@ blockquote p { margin-bottom: .4em; }
   .tabs, .site-head.open .tabs { display: flex; flex-direction: row; flex-basis: auto; flex-wrap: wrap; justify-content: flex-end; padding: 10px var(--gutter); }
   .tabs .videos-tab { display: flex; }
   .tabs a { min-height: 44px; border-radius: 999px; padding: 0 16px; font-size: .95rem; font-weight: 600; }
-  .hero { min-height: min(72svh, 640px); }
+  .hero { min-height: min(92svh, 860px); }
+  .hero-video { padding-bottom: 34px; }
   .hero .wrap { padding-top: 44px; }
   .hero-cta .btns { flex-direction: row; }
   .hero p { max-width: 42ch; }
