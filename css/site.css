@@ -123,20 +123,21 @@ p { margin: 0 0 1em; max-width: 68ch; }
 /* ---------- Hero ---------- */
 /* Title in the sky at the top (dark scrim behind it for legibility); the prayer mat stays visible;
    the bottom fades into the page colour so the photo melts into the rest of the site. */
-.hero { position: relative; isolation: isolate; padding: 0; min-height: min(68svh, 520px); display: flex; flex-direction: column; align-items: stretch; }
+.hero { position: relative; isolation: isolate; padding: 0; display: flex; flex-direction: column; align-items: stretch; }
 .hero-img { position: absolute; inset: 0; z-index: -2; display: block; }
-.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 70%; }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; }
 .hero::after {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background:
     linear-gradient(180deg, rgba(20,14,12,.66) 0%, rgba(20,14,12,.38) 24%, rgba(20,14,12,0) 44%),
     linear-gradient(0deg, var(--dusk) 0%, rgba(28,20,17,.6) 14%, rgba(28,20,17,0) 34%);
 }
-.hero .wrap { width: 100%; padding-top: 22px; padding-bottom: 22px; }
+.hero .wrap { width: 100%; padding-top: 22px; padding-bottom: 14px; }
 .hero h1 { font-size: clamp(2.1rem, 1.5rem + 2.6vw, 3.4rem); font-weight: 800; color: #fffaf2; margin-bottom: .25em; text-shadow: 0 2px 4px rgba(0,0,0,.55), 0 4px 28px rgba(0,0,0,.6); }
 .hero p { font-size: 1.1rem; font-weight: 600; color: #fffaf2; max-width: 34ch; margin-bottom: 0; text-shadow: 0 1px 3px rgba(0,0,0,.7), 0 2px 16px rgba(0,0,0,.6); }
 /* the introduction video sits over the prayer mat at the bottom of the photo */
-.hero-video { width: 100%; margin-top: auto; padding-top: 8px; padding-bottom: 18px; }
+.hero-video { width: 100%; }
+.hero .hero-video { padding-top: 4px; padding-bottom: 18px; }
 .hero-video .yt { max-width: 600px; margin: 0 auto; box-shadow: 0 18px 50px -12px rgba(0,0,0,.75), 0 0 0 1px rgba(255,250,242,.18); }
 .hero-cta { position: relative; z-index: 2; padding-top: 18px; }
 .hero-cta .btns { margin-top: 0; }
@@ -325,8 +326,7 @@ blockquote p { margin-bottom: .4em; }
   .tabs, .site-head.open .tabs { display: flex; flex-direction: row; flex-basis: auto; flex-wrap: wrap; justify-content: flex-end; padding: 10px var(--gutter); }
   .tabs .videos-tab { display: flex; }
   .tabs a { min-height: 44px; border-radius: 999px; padding: 0 16px; font-size: .95rem; font-weight: 600; }
-  .hero { min-height: min(92svh, 860px); }
-  .hero-video { padding-bottom: 34px; }
+  .hero .hero-video { padding-top: 8px; padding-bottom: 40px; }
   .hero .wrap { padding-top: 44px; }
   .hero-cta .btns { flex-direction: row; }
   .hero p { max-width: 42ch; }
