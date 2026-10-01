@@ -1,12 +1,14 @@
-// Click-to-load YouTube: shows a thumbnail until tapped, so pages stay fast on phones.
+// Click-to-load YouTube (or Vimeo, with data-vimeo): shows a thumbnail until tapped, so pages stay fast on phones.
 document.addEventListener("click", (e) => {
   const btn = e.target.closest(".yt button");
   if (!btn) return;
   const box = btn.closest(".yt");
   const id = box.dataset.id;
   const f = document.createElement("iframe");
-  f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
-  f.title = box.dataset.title || "YouTube video";
+  f.src = box.dataset.vimeo !== undefined
+    ? `https://player.vimeo.com/video/${id}?autoplay=1&dnt=1&title=0&byline=0&portrait=0`
+    : `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
+  f.title = box.dataset.title || "Video";
   f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
   f.allowFullscreen = true;
   box.replaceChildren(f);
