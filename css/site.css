@@ -400,3 +400,6 @@ h2 u { text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .sin .s-more { display: block; margin-top: 6px; font-size: .86rem; font-weight: 700; color: var(--gold); }
 .sin .s-more::after { content: " ▾"; }
 .sin[open] .s-more { display: none; }
+
+.meet-btn { margin: 14px 0 0; }
+.meet-btn .btn { width: 100%; max-width: 360px; min-height: 48px; }
