@@ -73,11 +73,20 @@
     var golds = ["#f4d58d", "#e9bf62", "#fff3c4", "#d4a24a", "#f1d184", "#b9822f"];
     var n = reduce ? 30 : Math.min(160, Math.round(W / 3)), P = [];
     for (var i = 0; i < n; i++) {
-      var flower = i % 4 === 0;
+      var kind = i % 4 === 0 ? "flower" : i % 4 === 2 ? "star" : "piece";   // a quarter flowers, a quarter stars, half confetti
       P.push({ x: Math.random() * W, y: -20 - Math.random() * H * 0.6, vx: (Math.random() - 0.5) * 1.6,
-               vy: 1.6 + Math.random() * 2.4, r: flower ? 7 + Math.random() * 6 : 4 + Math.random() * 5,
+               vy: 1.6 + Math.random() * 2.4, r: kind === "piece" ? 7 + Math.random() * 5 : 8 + Math.random() * 6,
                a: Math.random() * Math.PI * 2, va: (Math.random() - 0.5) * 0.2, w: Math.random() * Math.PI * 2,
-               c: golds[i % golds.length], f: flower });
+               c: golds[i % golds.length], k: kind });
+    }
+    function drawStar(p) {   // five-point gold star with a darker gold edge
+      ctx.beginPath();
+      for (var k = 0; k < 10; k++) {
+        var rr = k % 2 ? p.r * 0.45 : p.r, an = k * Math.PI / 5 - Math.PI / 2;
+        ctx.lineTo(Math.cos(an) * rr, Math.sin(an) * rr);
+      }
+      ctx.closePath(); ctx.fillStyle = p.c; ctx.fill();
+      ctx.lineWidth = 1; ctx.strokeStyle = "#a8742a"; ctx.stroke();
     }
     function petalFlower(p) {
       ctx.fillStyle = p.c;
@@ -94,8 +103,9 @@
       P.forEach(function (p) {
         p.w += 0.05; p.x += p.vx + Math.sin(p.w) * 0.6; p.y += p.vy; p.a += p.va;
         ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.a);
-        if (p.f) petalFlower(p);
-        else { ctx.fillStyle = p.c; ctx.scale(1, Math.abs(Math.cos(p.w * 2)) * 0.8 + 0.2); ctx.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); }
+        if (p.k === "flower") petalFlower(p);
+        else if (p.k === "star") drawStar(p);
+        else { ctx.fillStyle = p.c; ctx.scale(1, Math.abs(Math.cos(p.w * 2)) * 0.65 + 0.35); ctx.fillRect(-p.r / 2, -p.r * 0.35, p.r, p.r * 0.7); }   // thick confetti pieces
         ctx.restore();
       });
       if (t < dur) requestAnimationFrame(frame); else cv.remove();
