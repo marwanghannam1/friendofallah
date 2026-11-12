@@ -43,8 +43,22 @@
   cards.forEach(function (card) {
     var b = B[+card.dataset.id];
     card.querySelector(".bsvg").innerHTML = svg(b);
-    if (earned.has(b.k)) card.classList.add("earned");
+    paint(card, earned.has(b.k));
+    card.querySelector(".bach").addEventListener("click", function () { toggle(b); });
   });
+
+  function paint(card, on) {
+    card.classList.toggle("earned", on);
+    var a = card.querySelector(".bach");
+    a.textContent = on ? "✓ Achieved" : "I've achieved this";
+    a.setAttribute("aria-pressed", on ? "true" : "false");
+  }
+  function toggle(b) {
+    if (earned.has(b.k)) earned.delete(b.k); else earned.add(b.k);
+    save(Array.from(earned));
+    paint(document.querySelector('.badge[data-id="' + b.id + '"]'), earned.has(b.k));
+    count();
+  }
 
   function count() {
     var n = earned.size, c = document.getElementById("bcount"), bar = document.getElementById("bbar");
@@ -67,7 +81,7 @@
     q.querySelector("p").textContent = b.e; q.querySelector("cite").textContent = b.r;
     dlg.querySelector(".bd-print").href = b.p;
     var on = earned.has(b.k), eb = dlg.querySelector(".bd-earn");
-    eb.textContent = on ? "✓ Earned · tap to undo" : "I have earned this badge";
+    eb.textContent = on ? "✓ Achieved · tap to undo" : "I've achieved this badge";
     eb.classList.toggle("on", on);
   }
   cards.forEach(function (card) {
@@ -77,11 +91,7 @@
     });
   });
   dlg.querySelector(".bd-earn").addEventListener("click", function () {
-    var k = cur.k;
-    if (earned.has(k)) earned.delete(k); else earned.add(k);
-    save(Array.from(earned));
-    document.querySelector('.badge[data-id="' + cur.id + '"]').classList.toggle("earned", earned.has(k));
-    count(); fill(cur);
+    toggle(cur); fill(cur);
   });
   dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
 })();
