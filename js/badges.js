@@ -60,7 +60,7 @@
     count();
   }
 
-  // golden confetti and golden flowers falling down the screen (about 3 seconds)
+  // thick golden confetti and golden stars falling down the screen (about 3 seconds)
   function celebrate() {
     var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
     var cv = document.createElement("canvas");
@@ -73,7 +73,7 @@
     var golds = ["#f4d58d", "#e9bf62", "#fff3c4", "#d4a24a", "#f1d184", "#b9822f"];
     var n = reduce ? 30 : Math.min(160, Math.round(W / 3)), P = [];
     for (var i = 0; i < n; i++) {
-      var kind = i % 4 === 0 ? "flower" : i % 4 === 2 ? "star" : "piece";   // a quarter flowers, a quarter stars, half confetti
+      var kind = i % 3 === 0 ? "star" : "piece";   // a third stars, the rest thick confetti (no flowers, user 12 Nov 2026)
       P.push({ x: Math.random() * W, y: -20 - Math.random() * H * 0.6, vx: (Math.random() - 0.5) * 1.6,
                vy: 1.6 + Math.random() * 2.4, r: kind === "piece" ? 7 + Math.random() * 5 : 8 + Math.random() * 6,
                a: Math.random() * Math.PI * 2, va: (Math.random() - 0.5) * 0.2, w: Math.random() * Math.PI * 2,
@@ -88,14 +88,6 @@
       ctx.closePath(); ctx.fillStyle = p.c; ctx.fill();
       ctx.lineWidth = 1; ctx.strokeStyle = "#a8742a"; ctx.stroke();
     }
-    function petalFlower(p) {
-      ctx.fillStyle = p.c;
-      for (var k = 0; k < 5; k++) {
-        ctx.save(); ctx.rotate(k * Math.PI * 2 / 5);
-        ctx.beginPath(); ctx.ellipse(0, -p.r * 0.55, p.r * 0.32, p.r * 0.55, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
-      }
-      ctx.fillStyle = "#8f5f1f"; ctx.beginPath(); ctx.arc(0, 0, p.r * 0.22, 0, Math.PI * 2); ctx.fill();
-    }
     var t0 = performance.now(), dur = reduce ? 1200 : 3200;
     (function frame(now) {
       var t = now - t0; ctx.clearRect(0, 0, W, H);
@@ -103,8 +95,7 @@
       P.forEach(function (p) {
         p.w += 0.05; p.x += p.vx + Math.sin(p.w) * 0.6; p.y += p.vy; p.a += p.va;
         ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.a);
-        if (p.k === "flower") petalFlower(p);
-        else if (p.k === "star") drawStar(p);
+        if (p.k === "star") drawStar(p);
         else { ctx.fillStyle = p.c; ctx.scale(1, Math.abs(Math.cos(p.w * 2)) * 0.65 + 0.35); ctx.fillRect(-p.r / 2, -p.r * 0.35, p.r, p.r * 0.7); }   // thick confetti pieces
         ctx.restore();
       });
