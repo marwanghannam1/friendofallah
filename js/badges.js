@@ -75,7 +75,8 @@
     dlg.querySelector(".bd-ar").textContent = b.ar;
     dlg.querySelector("#bd-tr").textContent = b.tr;
     dlg.querySelector(".bd-en").textContent = b.en + " · " + b.g;
-    dlg.querySelector(".bd-sub b").textContent = b.sin;
+    dlg.querySelector(".bd-sub span").textContent = b.pos ? "Achievement" : "Avoids";
+    dlg.querySelector(".bd-sub b").textContent = b.pos ? "“" + b.pos + "”" : b.sin;
     dlg.querySelector(".bd-t").textContent = b.t;
     var q = dlg.querySelector(".bd-e"); q.hidden = !b.e;
     q.querySelector("p").textContent = b.e; q.querySelector("cite").textContent = b.r;
