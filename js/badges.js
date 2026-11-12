@@ -54,10 +54,52 @@
     a.setAttribute("aria-pressed", on ? "true" : "false");
   }
   function toggle(b) {
-    if (earned.has(b.k)) earned.delete(b.k); else earned.add(b.k);
+    if (earned.has(b.k)) earned.delete(b.k); else { earned.add(b.k); celebrate(); }
     save(Array.from(earned));
     paint(document.querySelector('.badge[data-id="' + b.id + '"]'), earned.has(b.k));
     count();
+  }
+
+  // golden confetti and golden flowers falling down the screen (about 3 seconds)
+  function celebrate() {
+    var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var cv = document.createElement("canvas");
+    cv.className = "bconfetti"; cv.setAttribute("aria-hidden", "true");
+    var host = document.getElementById("bdlg");
+    (host && host.open ? host : document.body).appendChild(cv);   // inside the open card, so it shows above it
+    var dpr = Math.min(window.devicePixelRatio || 1, 2), W = innerWidth, H = innerHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    var ctx = cv.getContext("2d"); ctx.scale(dpr, dpr);
+    var golds = ["#f4d58d", "#e9bf62", "#fff3c4", "#d4a24a", "#f1d184", "#b9822f"];
+    var n = reduce ? 30 : Math.min(160, Math.round(W / 3)), P = [];
+    for (var i = 0; i < n; i++) {
+      var flower = i % 4 === 0;
+      P.push({ x: Math.random() * W, y: -20 - Math.random() * H * 0.6, vx: (Math.random() - 0.5) * 1.6,
+               vy: 1.6 + Math.random() * 2.4, r: flower ? 7 + Math.random() * 6 : 4 + Math.random() * 5,
+               a: Math.random() * Math.PI * 2, va: (Math.random() - 0.5) * 0.2, w: Math.random() * Math.PI * 2,
+               c: golds[i % golds.length], f: flower });
+    }
+    function petalFlower(p) {
+      ctx.fillStyle = p.c;
+      for (var k = 0; k < 5; k++) {
+        ctx.save(); ctx.rotate(k * Math.PI * 2 / 5);
+        ctx.beginPath(); ctx.ellipse(0, -p.r * 0.55, p.r * 0.32, p.r * 0.55, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+      }
+      ctx.fillStyle = "#8f5f1f"; ctx.beginPath(); ctx.arc(0, 0, p.r * 0.22, 0, Math.PI * 2); ctx.fill();
+    }
+    var t0 = performance.now(), dur = reduce ? 1200 : 3200;
+    (function frame(now) {
+      var t = now - t0; ctx.clearRect(0, 0, W, H);
+      ctx.globalAlpha = t > dur - 600 ? Math.max(0, (dur - t) / 600) : 1;
+      P.forEach(function (p) {
+        p.w += 0.05; p.x += p.vx + Math.sin(p.w) * 0.6; p.y += p.vy; p.a += p.va;
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.a);
+        if (p.f) petalFlower(p);
+        else { ctx.fillStyle = p.c; ctx.scale(1, Math.abs(Math.cos(p.w * 2)) * 0.8 + 0.2); ctx.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); }
+        ctx.restore();
+      });
+      if (t < dur) requestAnimationFrame(frame); else cv.remove();
+    })(t0);
   }
 
   function count() {
