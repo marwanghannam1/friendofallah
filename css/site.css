@@ -459,3 +459,16 @@ h2 u { text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .bdlg .bd-earn { margin-top: 18px; width: 100%; }
 .bdlg .bd-earn.on { background: var(--gold); color: #2a1a0e; }
 @media (min-width: 40rem) { .kh-cover img { max-width: 200px; } }
+/* badges v2 (12 Nov): card = open button + print link; sin line; every badge its own colour */
+.badge { padding: 0; cursor: default; }
+.badge .bopen { display: block; width: 100%; background: none; border: 0; color: inherit; font: inherit; cursor: pointer; padding: 12px 8px 14px; text-align: center; border-radius: 18px; }
+.badge .bopen:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+.badge small { display: block; margin-top: 4px; font-size: .78rem; line-height: 1.35; color: color-mix(in srgb, var(--mist) 80%, transparent); }
+.badge .bprint { position: absolute; top: 6px; right: 6px; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: var(--gold); background: rgba(0,0,0,.35); border: 1px solid rgba(244,213,141,.25); }
+@media (hover: hover) { .badge .bprint:hover { background: var(--gold); color: #2a1a0e; } }
+.badge .bprint:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.badge .got { left: 8px; right: auto; }
+.bdlg .bd-sub { background: rgba(0,0,0,.22); border-radius: 10px; padding: 10px 12px; text-align: left; }
+.bdlg .bd-sub span { display: block; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--c); font-weight: 900; }
+.bdlg .bd-sub b { color: var(--parchment); font-weight: 700; }
+.bdlg .bd-print { margin-top: 10px; width: 100%; display: inline-flex; gap: 8px; justify-content: center; align-items: center; }
