@@ -414,3 +414,48 @@ h2 u { text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .levels li .lvnote { color: var(--mist); font-style: italic; }
 .levels li .lvmind { margin-top: 8px; padding: 8px 10px; border-left: 3px solid var(--c, var(--ember)); background: rgba(247,237,224,.04); border-radius: 6px; }
 .levels li .lvmind b { display: inline; margin: 0; }
+
+/* ---------------- /badges: Names of Allah badges (style B, eight-point star enamel) ---------------- */
+.st-steps { --c: #7fd1c6; } .st-body { --c: var(--ember); } .st-mind { --c: var(--sage); } .st-heart { --c: var(--rose); }
+.st-nafs { --c: var(--violet); } .st-khalwa { --c: var(--gold); } .st-beyond { --c: #9db8ec; }
+.khalifah-doc { display: grid; gap: 16px; align-items: center; }
+.kh-cover img { width: 100%; max-width: 150px; height: auto; display: block; margin: 0 auto; border-radius: 10px; box-shadow: 0 14px 30px rgba(0,0,0,.45); }
+@media (min-width: 40rem) { .khalifah-doc { grid-template-columns: 200px 1fr; } }
+.bprogress { margin-top: 18px; font-weight: 700; color: var(--mist); }
+.bprogress b { color: var(--gold); font-size: 1.2em; }
+.bprogress .bar { height: 8px; border-radius: 99px; background: rgba(247,237,224,.08); margin-top: 8px; overflow: hidden; }
+.bprogress .bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--ember), var(--gold)); border-radius: 99px; transition: width .4s; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chips .chip { padding: 8px 14px; min-height: 40px; display: inline-flex; align-items: center; border-radius: 99px; border: 1px solid color-mix(in srgb, var(--c) 55%, transparent); color: var(--c); font-weight: 800; font-size: .9rem; text-decoration: none; background: rgba(0,0,0,.18); }
+.bstage { padding-top: 26px; scroll-margin-top: 80px; }
+.bstage-head { color: var(--c); font-size: clamp(1.4rem, 1.1rem + 1.4vw, 2rem); }
+.bstage-head span { color: var(--mist); font-size: .55em; font-weight: 700; margin-left: 6px; }
+.bg-title { margin: 22px 0 10px; font-size: 1.05rem; color: var(--parchment); }
+.bg-title span { color: var(--mist); font-weight: 600; font-size: .85em; }
+.bgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+@media (min-width: 40rem) { .bgrid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 64rem) { .bgrid { grid-template-columns: repeat(5, 1fr); } }
+.badge { position: relative; background: rgba(247,237,224,.03); border: 1px solid rgba(247,237,224,.06); border-radius: 18px; padding: 12px 8px 14px; color: var(--parchment); cursor: pointer; text-align: center; font: inherit; }
+.badge .bsvg { display: block; width: 100%; max-width: 170px; aspect-ratio: 1; margin: 0 auto; }
+.badge .bsvg svg { width: 100%; height: 100%; filter: drop-shadow(0 10px 16px rgba(0,0,0,.5)); }
+.badge b { display: block; margin-top: 6px; font-size: .88rem; color: var(--mist); font-weight: 700; line-height: 1.3; }
+.badge .got { position: absolute; top: 8px; right: 8px; width: 26px; height: 26px; border-radius: 50%; background: var(--gold); color: #2a1a0e; font-style: normal; font-weight: 900; display: none; place-items: center; box-shadow: 0 4px 12px rgba(0,0,0,.4); }
+.badge.earned { border-color: color-mix(in srgb, var(--gold) 55%, transparent); background: rgba(244,213,141,.07); }
+.badge.earned .got { display: grid; }
+.badge:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+@media (hover: hover) { .badge:hover { border-color: color-mix(in srgb, var(--c) 50%, transparent); } }
+.bdlg { width: min(92vw, 30rem); max-height: 88dvh; overflow: auto; border: 1px solid color-mix(in srgb, var(--c) 45%, transparent); border-radius: 22px; background: var(--dusk-2, #271c17); color: var(--parchment); padding: 22px 20px 24px; text-align: center; }
+.bdlg::backdrop { background: rgba(10,6,4,.72); backdrop-filter: blur(3px); }
+.bdlg .x { position: absolute; top: 10px; right: 12px; width: 44px; height: 44px; border: 0; background: none; color: var(--mist); font-size: 28px; cursor: pointer; }
+.bdlg .bd-badge { width: 190px; height: 190px; margin: 4px auto 0; }
+.bdlg .bd-badge svg { width: 100%; height: 100%; filter: drop-shadow(0 12px 20px rgba(0,0,0,.55)); }
+.bdlg .bd-ar { font-size: 2rem; color: var(--gold); margin-top: 6px; }
+.bdlg h2 { font-size: 1.4rem; margin-top: 2px; }
+.bdlg .bd-en { color: var(--c); font-weight: 800; font-size: .9rem; }
+.bdlg .bd-sub { color: var(--mist); font-weight: 700; margin-top: 8px; }
+.bdlg .bd-t { margin-top: 12px; line-height: 1.6; text-align: left; }
+.bdlg .bd-e { margin: 14px 0 0; padding: 12px 14px; border-left: 3px solid var(--c); background: rgba(0,0,0,.2); border-radius: 8px; text-align: left; font-style: italic; color: var(--parchment); }
+.bdlg .bd-e cite { display: block; margin-top: 6px; font-style: normal; color: var(--mist); font-weight: 700; font-size: .85rem; }
+.bdlg .bd-earn { margin-top: 18px; width: 100%; }
+.bdlg .bd-earn.on { background: var(--gold); color: #2a1a0e; }
+@media (min-width: 40rem) { .kh-cover img { max-width: 200px; } }
