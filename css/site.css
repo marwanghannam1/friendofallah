@@ -478,3 +478,8 @@ h2 u { text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .bsteps { margin: 12px 0 0; padding-left: 1.3em; line-height: 1.55; color: var(--parchment); }
 .bsteps li { margin-bottom: 4px; }
 .bconfetti { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999; }
+
+/* badges: the line under "Avoids" that links it to the Name of Allah */
+.badge small em { display: block; margin-top: 3px; font-style: italic; color: var(--parchment); opacity: .85; }
+.bdlg .bd-sub .bd-ln { display: block; margin-top: 6px; font-style: italic; color: var(--parchment); font-weight: 600; }
+.bdlg .bd-sub .bd-ln[hidden] { display: none; }
