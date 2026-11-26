@@ -542,3 +542,7 @@ h2 u { text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .insp-hero { padding-top: 22px; }
 .insp-hero .btn.insp-go { margin-top: 0; }
+
+/* /inspiration: the Arabic of the ayah or hadith, above the English */
+.insp-quote .insp-qar { font-family: var(--font-arabic); font-style: normal; font-size: 1.5rem; line-height: 2.05; color: var(--gold); text-align: right; margin: 0 0 8px; }
+.insp-quote .insp-qar[hidden] { display: none; }

@@ -53,6 +53,7 @@
     text("insp-how-h", "How this reflects " + b.tr + " (" + b.en + ")");
     text("insp-how", b.how);
     text("insp-e", b.e); text("insp-r", b.r); $("insp-quote").hidden = !b.e;
+    text("insp-ea", b.ea); $("insp-ea").hidden = !b.ea;   // the Arabic of the ayah or hadith
     $("insp-print").href = b.p;
     $("insp-print").setAttribute("aria-label", "Print the " + b.tr + " certificate (PDF)");
     try { history.replaceState(null, "", "#" + b.id); } catch (e) {}
