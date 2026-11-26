@@ -68,13 +68,18 @@
         t[1].forEach(function (line) { var p = document.createElement("p"); p.textContent = line; w.appendChild(p); });
         d.appendChild(w);
       });
+      if (s.w) {   // how doing these actions reflects the Name
+        var y = document.createElement("div"); y.className = "it-why";
+        var yh = document.createElement("b"); yh.textContent = s.w[0]; y.appendChild(yh);
+        var yp = document.createElement("p"); yp.textContent = s.w[1]; y.appendChild(yp);
+        if (s.w[2]) { var yq = document.createElement("p"); yq.className = "it-q"; yq.textContent = "“" + s.w[2] + "”"; y.appendChild(yq); }
+        d.appendChild(y);
+      }
       var a = document.createElement("a"); a.className = "it-open"; a.href = s.u; a.target = "_blank"; a.rel = "noopener";
       a.textContent = "Open this sheet (page " + s.pg + ")"; d.appendChild(a);
       box.appendChild(d);
     });
     $("insp-tasks").previousElementSibling.hidden = !PL.length;
-    text("insp-how-h", "How this reflects " + b.tr + " (" + b.en + ")");
-    text("insp-how", b.how);
     text("insp-e", b.e); text("insp-r", b.r); $("insp-quote").hidden = !b.e;
     text("insp-ea", b.ea); $("insp-ea").hidden = !b.ea;   // the Arabic of the ayah or hadith
     $("insp-print").href = b.p;

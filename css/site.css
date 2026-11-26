@@ -567,3 +567,9 @@ h2 u { text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .insp-task .it-item b { display: block; color: var(--c); font-size: .9rem; margin-bottom: 2px; }
 .insp-task .it-item p { margin: 0 0 6px; line-height: 1.55; }
 .insp-task .it-open { display: inline-block; margin-top: 4px; color: var(--mist); font-size: .88rem; text-decoration: underline; min-height: 32px; line-height: 32px; }
+
+/* /inspiration: how each sheet's actions reflect the Name */
+.insp-task .it-why { margin-top: 10px; background: color-mix(in srgb, var(--c) 12%, transparent); border-radius: 10px; padding: 10px 12px; }
+.insp-task .it-why b { display: block; color: var(--c); font-size: .9rem; margin-bottom: 4px; }
+.insp-task .it-why p { margin: 0 0 4px; line-height: 1.55; }
+.insp-task .it-why .it-q { font-style: italic; color: var(--parchment); margin: 6px 0 0; }
