@@ -41,16 +41,32 @@
     text("insp-stage", b.stage); text("insp-group", b.g === b.stage ? "" : b.g);
     $("insp-group").hidden = !b.g || b.sk === "steps";
     text("insp-ln", b.ln ? "“" + b.ln + "”" : ""); $("insp-ln").hidden = !b.ln;
-    var ul = $("insp-sheets"); ul.innerHTML = "";
-    if (b.sk === "khalwa" && b.sheets.length) { var kl = document.createElement("li"); kl.textContent = "Day 40 · The Khalwa retreat"; ul.appendChild(kl); }
-    if (b.sheets.length) b.sheets.forEach(function (s) {
+    var PL = (window.INSP_PL || [])[b.nk] || [];
+    var ul = $("insp-sheets"); ul.innerHTML = "";   // every sheet that has this Name: body, mind, heart, nafs
+    if (b.sk === "khalwa") { var kl = document.createElement("li"); kl.textContent = "Day 40 · The Khalwa retreat"; ul.appendChild(kl); }
+    PL.forEach(function (s) {
       var li = document.createElement("li"), a = document.createElement("a");
-      a.href = s[1]; a.target = "_blank"; a.rel = "noopener"; a.textContent = s[0];
+      a.href = s.u; a.target = "_blank"; a.rel = "noopener"; a.textContent = s.l;
       li.appendChild(a); ul.appendChild(li);
     });
-    else { var li = document.createElement("li"); li.textContent = "The Khalwa: the day 40 retreat of the 40 Day Immersion"; ul.appendChild(li); }
-    text("insp-avoid", b.avoid); $("insp-avoid-box").hidden = !b.avoid;
-    text("insp-practise", b.practise);
+    var box = $("insp-tasks"); box.innerHTML = "";   // one box per sheet, worded exactly as on the sheet
+    PL.forEach(function (s) {
+      var d = document.createElement("section"); d.className = "insp-task st-" + s.s;
+      var hd = document.createElement("header");
+      hd.innerHTML = '<span class="it-stage"></span><span class="it-kick"></span><h4></h4>';
+      hd.querySelector(".it-stage").textContent = s.st; hd.querySelector(".it-kick").textContent = s.k; hd.querySelector("h4").textContent = s.h;
+      d.appendChild(hd);
+      s.t.forEach(function (t) {
+        var w = document.createElement("div"); w.className = "it-item";
+        var lab = document.createElement("b"); lab.textContent = t[0]; w.appendChild(lab);
+        t[1].forEach(function (line) { var p = document.createElement("p"); p.textContent = line; w.appendChild(p); });
+        d.appendChild(w);
+      });
+      var a = document.createElement("a"); a.className = "it-open"; a.href = s.u; a.target = "_blank"; a.rel = "noopener";
+      a.textContent = "Open this sheet (page " + s.pg + ")"; d.appendChild(a);
+      box.appendChild(d);
+    });
+    $("insp-tasks").previousElementSibling.hidden = !PL.length;
     text("insp-how-h", "How this reflects " + b.tr + " (" + b.en + ")");
     text("insp-how", b.how);
     text("insp-e", b.e); text("insp-r", b.r); $("insp-quote").hidden = !b.e;
