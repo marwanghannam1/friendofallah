@@ -594,3 +594,12 @@ h2 u { text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .insp-tick .icount { order: 3; margin-left: 4px; padding-left: 12px; border-left: 1px solid var(--dusk-3); }
 .insp-badge { width: min(78vw, 320px); }
 @media (min-width: 40rem) { .insp-badge { width: 320px; } }
+
+/* /inspiration: badge sized to the screen height so the translation shows without scrolling on a phone (user, 26 Nov 2026) */
+.insp-hero { padding-top: 14px; padding-bottom: 8px; }
+.insp-card { padding-top: 16px; }
+.insp-tick { margin-bottom: 6px; }
+.insp-badge { width: min(78vw, 300px, max(170px, 32vh)); width: min(78vw, 300px, max(170px, 32svh)); }
+.insp-ar { font-size: 1.8rem; line-height: 1.5; margin-top: 4px; }
+@media (min-width: 40rem) { .insp-badge { width: min(300px, max(200px, 36svh)); } .insp-card { padding-top: 24px; } }
+@media (max-height: 620px) { .insp-ar { display: none; } .insp-badge { width: min(78vw, max(150px, 30svh)); } }
