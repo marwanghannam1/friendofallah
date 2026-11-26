@@ -586,3 +586,11 @@ h2 u { text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .icount b { color: var(--gold); font-size: 1.15rem; }
 .insp-badge { width: min(52vw, 230px); }
 @media (min-width: 40rem) { .insp-badge { width: 230px; } }
+
+/* /inspiration: the tick box sits in its own row above the badge (never over it), and the badge is bigger (user, 26 Nov 2026) */
+.insp-tick { position: static; display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 0 12px; }
+.insp-tick small { order: 2; font-size: .9rem; text-align: left; grid-column: auto; color: var(--parchment); }
+.insp-tick .itick { order: 1; }
+.insp-tick .icount { order: 3; margin-left: 4px; padding-left: 12px; border-left: 1px solid var(--dusk-3); }
+.insp-badge { width: min(78vw, 320px); }
+@media (min-width: 40rem) { .insp-badge { width: 320px; } }
