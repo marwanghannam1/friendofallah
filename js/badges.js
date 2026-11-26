@@ -122,6 +122,12 @@
     dlg.querySelector(".bd-sub b").textContent = b.pos ? "“" + b.pos + "”" : b.sin;
     var ln = dlg.querySelector(".bd-ln"); ln.textContent = b.ln || ""; ln.hidden = !b.ln;   // links the sin to the Name
     dlg.querySelector(".bd-t").textContent = b.t;
+    var pl = dlg.querySelector(".bd-pl"), ul = pl.querySelector("ul"); ul.innerHTML = "";   // every sheet that has this Name
+    (b.pl || []).forEach(function (x) {
+      var li = document.createElement("li"), a = document.createElement("a");
+      a.href = x[1]; a.target = "_blank"; a.rel = "noopener"; a.textContent = x[0]; li.appendChild(a); ul.appendChild(li);
+    });
+    pl.hidden = !(b.pl && b.pl.length);
     var q = dlg.querySelector(".bd-e"); q.hidden = !b.e;
     q.querySelector("p").textContent = b.e; q.querySelector("cite").textContent = b.r;
     dlg.querySelector(".bd-print").href = b.p;

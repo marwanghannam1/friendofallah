@@ -42,6 +42,7 @@
     $("insp-group").hidden = !b.g || b.sk === "steps";
     text("insp-ln", b.ln ? "“" + b.ln + "”" : ""); $("insp-ln").hidden = !b.ln;
     var ul = $("insp-sheets"); ul.innerHTML = "";
+    if (b.sk === "khalwa" && b.sheets.length) { var kl = document.createElement("li"); kl.textContent = "Day 40 · The Khalwa retreat"; ul.appendChild(kl); }
     if (b.sheets.length) b.sheets.forEach(function (s) {
       var li = document.createElement("li"), a = document.createElement("a");
       a.href = s[1]; a.target = "_blank"; a.rel = "noopener"; a.textContent = s[0];
