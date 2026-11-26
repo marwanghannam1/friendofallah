@@ -38,8 +38,14 @@
     card.className = "insp-card st-" + b.sk;
     $("insp-badge").innerHTML = svg(b);
     text("insp-ar", b.ar); text("insp-tr", b.tr); text("insp-en", b.en);
-    text("insp-stage", b.stage); text("insp-group", b.g === b.stage ? "" : b.g);
-    $("insp-group").hidden = !b.g || b.sk === "steps";
+    // one coloured label for every stage this Name appears in: body, mind, heart, nafs (user, 26 Nov 2026)
+    var LBL = { body: "Body", mind: "Mind", heart: "Heart", nafs: "Nafs", steps: "3 simple steps", khalwa: "Khalwa" };
+    var seen = [], chips = $("insp-chips"); chips.innerHTML = "";
+    ((window.INSP_PL || [])[b.nk] || []).forEach(function (s) { if (seen.indexOf(s.s) < 0) seen.push(s.s); });
+    if (seen.indexOf(b.sk) < 0) seen.push(b.sk);
+    seen.sort(function (x, y) { var o = ["body", "mind", "heart", "nafs", "steps", "khalwa"]; return o.indexOf(x) - o.indexOf(y); });
+    seen.forEach(function (k) { var sp = document.createElement("span"); sp.className = "insp-stage st-" + k; sp.textContent = LBL[k] || k; chips.appendChild(sp); });
+    text("insp-group", b.sk === "steps" || !b.g ? "" : "This badge: " + b.g); $("insp-group").hidden = b.sk === "steps" || !b.g;
     text("insp-ln", b.ln ? "“" + b.ln + "”" : ""); $("insp-ln").hidden = !b.ln;
     var PL = (window.INSP_PL || [])[b.nk] || [];
     var ul = $("insp-sheets"); ul.innerHTML = "";   // every sheet that has this Name: body, mind, heart, nafs

@@ -507,7 +507,7 @@ h2 u { text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .insp-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 0 0 12px; }
 .insp-chips span { border-radius: 99px; padding: 4px 12px; font-size: .85rem; font-weight: 800; }
 .insp-stage { background: var(--c); color: #1c1411; }
-.insp-group { border: 1px solid color-mix(in srgb, var(--c) 55%, transparent); color: var(--parchment); }
+.insp-group { color: var(--mist); font-size: .9rem; font-weight: 700; margin: -4px 0 10px; }
 .insp-group[hidden], .insp-ln[hidden], .insp-quote[hidden], .insp-sec[hidden] { display: none; }
 .insp-ln { font-style: italic; font-size: 1.12rem; color: var(--parchment); max-width: 30rem; margin: 0 auto 4px; }
 .insp-sec { background: rgba(0,0,0,.18); border-radius: var(--radius-sm); padding: 14px 16px; margin-top: 12px; }
