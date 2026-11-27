@@ -624,3 +624,11 @@ button.icount:focus-visible { outline: 3px solid var(--gold); outline-offset: 2p
 .il-txt small { color: var(--mist); font-size: .78rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .il-ar { flex: none; font-family: var(--font-arabic); color: var(--gold); font-size: 1.3rem; }
 @media (max-width: 22rem) { .il-ar { display: none; } }
+
+/* /inspiration: the count looks like the gold "Click To Be Inspired" button so it reads as tappable (user, 27 Nov 2026) */
+.insp-tick button.icount { border: 0; border-radius: 999px; padding: 0 14px 0 16px; margin-left: 2px; min-height: 44px;
+  background: linear-gradient(135deg, #fff3c4, #e9bf62 45%, #c8913a); color: #2a1a0e; text-decoration: none; font-size: .95rem;
+  box-shadow: 0 8px 22px -10px rgba(233,191,98,.6), inset 0 1px 0 rgba(255,255,255,.6); display: inline-flex; align-items: center; gap: 2px; }
+.insp-tick button.icount b { color: #2a1a0e; font-size: 1.1rem; }
+.insp-tick button.icount::after { content: "›"; font-size: 1.35rem; line-height: 1; margin-left: 6px; }
+.insp-tick button.icount:hover { background: linear-gradient(135deg, #fff7d8, #f1cd76 45%, #d49c44); }
