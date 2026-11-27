@@ -603,3 +603,24 @@ h2 u { text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .insp-ar { font-size: 1.8rem; line-height: 1.5; margin-top: 4px; }
 @media (min-width: 40rem) { .insp-badge { width: min(300px, max(200px, 36svh)); } .insp-card { padding-top: 24px; } }
 @media (max-height: 620px) { .insp-ar { display: none; } .insp-badge { width: min(78vw, max(150px, 30svh)); } }
+
+/* /inspiration: the count opens the list of Names reflected */
+button.icount { background: none; border: 0; border-left: 1px solid var(--dusk-3); font: inherit; font-weight: 800; color: var(--parchment); cursor: pointer;
+  min-height: 44px; padding: 0 4px 0 12px; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--gold) 55%, transparent); text-underline-offset: 4px; }
+button.icount:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 6px; }
+.insp-list[hidden], .insp-hero[hidden], section.insp[hidden], .il-empty[hidden] { display: none; }
+.insp-list { padding: 18px 0 40px; }
+.insp-list h2 { margin: 18px 0 4px; }
+.il-count { color: var(--mist); margin: 0 0 14px; } .il-count b { color: var(--gold); font-size: 1.2rem; }
+.il-empty { background: var(--dusk-2); border: 1px solid var(--dusk-3); border-radius: var(--radius-sm); padding: 14px 16px; color: var(--mist); }
+.il-ul { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 10px; }
+.il-row { display: flex; align-items: center; gap: 12px; background: var(--dusk-2); border: 1px solid var(--dusk-3); border-left: 4px solid var(--c);
+  border-radius: var(--radius-sm); padding: 10px 12px; }
+.il-row .itick { flex: none; }
+.il-name { flex: 1; min-width: 0; display: flex; align-items: center; gap: 10px; color: var(--parchment); text-decoration: none; }
+.il-badge { flex: none; width: 52px; height: 52px; } .il-badge svg { width: 100%; height: 100%; display: block; }
+.il-txt { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.25; }
+.il-txt b { font-size: 1.02rem; } .il-txt i { font-style: normal; color: var(--c); font-weight: 700; font-size: .9rem; }
+.il-txt small { color: var(--mist); font-size: .78rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.il-ar { flex: none; font-family: var(--font-arabic); color: var(--gold); font-size: 1.3rem; }
+@media (max-width: 22rem) { .il-ar { display: none; } }

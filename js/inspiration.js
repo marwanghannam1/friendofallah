@@ -124,6 +124,48 @@
     t.classList.toggle("on", on); t.setAttribute("aria-checked", on ? "true" : "false");
     $("insp-count").textContent = done.size;
   }
+  // the count opens a list of every Name reflected, each with a tick box to untick, and a way back (user, 27 Nov 2026)
+  var hero = document.querySelector(".insp-hero"), main = document.querySelector("section.insp"), list = $("insp-list");
+  function svgSmall(b) { return svg(b).replace(/id="(ig|ie|ip)"/g, 'id="$1' + b.id + '"').replace(/url\(#(ig|ie|ip)\)/g, "url(#$1" + b.id + ")"); }
+  function renderList() {
+    var ul = $("il-ul"); ul.innerHTML = "";
+    B.forEach(function (b) {
+      if (!done.has(b.id) && !shown[b.id]) return;
+      shown[b.id] = 1;   // stays in the list after unticking, so it can be ticked again
+      var li = document.createElement("li"); li.className = "il-row st-" + b.sk;
+      var t = document.createElement("button"); t.type = "button"; t.className = "itick" + (done.has(b.id) ? " on" : "");
+      t.setAttribute("role", "checkbox"); t.setAttribute("aria-checked", done.has(b.id) ? "true" : "false");
+      t.setAttribute("aria-label", "Reflected " + b.tr + " for a day"); t.innerHTML = '<span aria-hidden="true">✓</span>';
+      t.addEventListener("click", function () {
+        if (done.has(b.id)) done.delete(b.id); else { done.add(b.id); celebrate(); }
+        saveR(Array.from(done)); renderList();
+      });
+      var a = document.createElement("a"); a.href = "#" + b.id; a.className = "il-name";
+      a.innerHTML = '<span class="il-badge"></span><span class="il-txt"><b></b><i></i><small></small></span><span class="il-ar" lang="ar" dir="rtl"></span>';
+      a.querySelector(".il-badge").innerHTML = svgSmall(b);
+      a.querySelector("b").textContent = b.tr; a.querySelector("i").textContent = b.en; a.querySelector("small").textContent = b.g;
+      a.querySelector(".il-ar").textContent = b.ar;
+      a.addEventListener("click", function (ev) { ev.preventDefault(); closeList(B.indexOf(b)); });
+      li.appendChild(t); li.appendChild(a); ul.appendChild(li);
+    });
+    $("il-count").textContent = done.size;
+    $("il-empty").hidden = !!ul.children.length;
+  }
+  var shown = {};
+  function openList() {
+    shown = {}; renderList();
+    hero.hidden = true; main.hidden = true; list.hidden = false;
+    try { history.replaceState(null, "", "#reflected"); } catch (e) {}
+    window.scrollTo(0, 0);
+  }
+  function closeList(i) {
+    list.hidden = true; hero.hidden = false; main.hidden = false;
+    show(typeof i === "number" && i >= 0 ? i : cur);
+    window.scrollTo(0, 0);
+  }
+  $("insp-count-btn").addEventListener("click", openList);
+  document.querySelectorAll(".insp-back").forEach(function (x) { x.addEventListener("click", function () { closeList(); }); });
+
   $("insp-tick").addEventListener("click", function () {
     var b = B[cur];
     if (done.has(b.id)) done.delete(b.id); else { done.add(b.id); celebrate(); }
@@ -173,4 +215,5 @@
   var h = decodeURIComponent(location.hash.slice(1)), start = -1;
   B.forEach(function (b, i) { if (b.id === h) start = i; });
   show(start >= 0 ? start : pick());
+  if (h === "reflected") openList();
 })();
