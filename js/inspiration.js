@@ -47,6 +47,14 @@
     seen.forEach(function (k) { var sp = document.createElement("span"); sp.className = "insp-stage st-" + k; sp.textContent = LBL[k] || k; chips.appendChild(sp); });
     text("insp-group", b.sk === "steps" || !b.g ? "" : "This badge: " + b.g); $("insp-group").hidden = b.sk === "steps" || !b.g;
     text("insp-ln", b.ln ? "“" + b.ln + "”" : ""); $("insp-ln").hidden = !b.ln;
+    var WY = (window.INSP_WAYS || [])[b.nk] || [], wol = $("insp-ways"); wol.innerHTML = "";   // 5 ways to reflect the Name today
+    $("insp-ways-h").textContent = b.tr === "Dhikr" ? "5 ways to remember Allah today" : "5 ways to reflect " + b.tr + " (" + b.en + ") today";
+    WY.forEach(function (w) {
+      var li = document.createElement("li"), tag = document.createElement("span"), p = document.createElement("p");
+      tag.className = "iw-area iw-" + w[0].toLowerCase().replace(/\s+/g, "-"); tag.textContent = w[0]; p.textContent = w[1];
+      li.appendChild(tag); li.appendChild(p); wol.appendChild(li);
+    });
+    $("insp-ways-box").hidden = !WY.length;
     var PL = (window.INSP_PL || [])[b.nk] || [];
     var ul = $("insp-sheets"); ul.innerHTML = "";   // every sheet that has this Name: body, mind, heart, nafs
     if (b.sk === "khalwa") { var kl = document.createElement("li"); kl.textContent = "Day 40 · The Khalwa retreat"; ul.appendChild(kl); }
