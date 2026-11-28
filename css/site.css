@@ -657,3 +657,6 @@ button.icount:focus-visible { outline: 3px solid var(--gold); outline-offset: 2p
 .it-langs a:lang(ar), .it-langs a { font-family: inherit; }
 .insp-sheets li { padding-bottom: 6px; }
 .insp-task .it-langs { margin-top: 2px; }
+.it-langs { gap: 5px; flex-wrap: nowrap; }
+.it-langs a { padding: 0 9px; font-size: .86rem; min-height: 34px; white-space: nowrap; }
+@media (max-width: 21rem) { .it-langs { flex-wrap: wrap; } }

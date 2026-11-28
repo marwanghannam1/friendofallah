@@ -97,9 +97,9 @@
   }
   function langLinks(s) {   // the same sheet in Arabic, Urdu and Bangla
     var sp = document.createElement("span"); sp.className = "it-langs";
-    (s.tl || []).forEach(function (x) {
+    [["English", s.u]].concat(s.tl || []).forEach(function (x) {   // English first, so every language is a clear button
       var a = document.createElement("a"); a.href = x[1]; a.target = "_blank"; a.rel = "noopener"; a.textContent = x[0];
-      a.setAttribute("aria-label", "Open this sheet in " + ({ "العربية": "Arabic", "اردو": "Urdu", "বাংলা": "Bangla" }[x[0]] || x[0]));
+      a.setAttribute("aria-label", "Open this sheet in " + ({ "English": "English", "العربية": "Arabic", "اردو": "Urdu", "বাংলা": "Bangla" }[x[0]] || x[0]));
       sp.appendChild(a);
     });
     return sp;
