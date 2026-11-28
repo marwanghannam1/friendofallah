@@ -661,3 +661,10 @@ button.icount:focus-visible { outline: 3px solid var(--gold); outline-offset: 2p
 .it-langs a { padding: 0 9px; font-size: .86rem; min-height: 34px; white-space: nowrap; }
 @media (max-width: 21rem) { .it-langs { flex-wrap: wrap; } }
 .insp-top + .insp-quote { margin-top: 6px; margin-bottom: 4px; }
+
+/* /inspiration: no stage labels or "This badge" line under the translation; the sheets are their own section after the 5 ways (user, 28 Nov 2026) */
+.insp-card .insp-chips, .insp-card .insp-group { display: none !important; }
+.insp-sheets-sec { margin-top: 26px; padding-top: 18px; border-top: 2px solid color-mix(in srgb, var(--gold) 40%, transparent); }
+.insp-sheets-sec .isec-h { font-size: 1.35rem; margin: 0 0 4px; color: var(--parchment); }
+.insp-sheets-sec .isec-sub { margin: 0 0 12px; color: var(--mist); font-size: .95rem; }
+.insp-sheets-sec > .insp-sec:first-of-type { margin-top: 0; }
