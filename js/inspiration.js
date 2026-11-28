@@ -61,7 +61,7 @@
     PL.forEach(function (s) {
       var li = document.createElement("li"), a = document.createElement("a");
       a.href = s.u; a.target = "_blank"; a.rel = "noopener"; a.textContent = s.l;
-      li.appendChild(a); ul.appendChild(li);
+      li.appendChild(a); li.appendChild(langLinks(s)); ul.appendChild(li);
     });
     var box = $("insp-tasks"); box.innerHTML = "";   // one box per sheet, worded exactly as on the sheet
     PL.forEach(function (s) {
@@ -84,7 +84,7 @@
         d.appendChild(y);
       }
       var a = document.createElement("a"); a.className = "it-open"; a.href = s.u; a.target = "_blank"; a.rel = "noopener";
-      a.textContent = "Open this sheet (page " + s.pg + ")"; d.appendChild(a);
+      a.textContent = "Open this sheet (page " + s.pg + ")"; d.appendChild(a); d.appendChild(langLinks(s));
       box.appendChild(d);
     });
     $("insp-tasks").previousElementSibling.hidden = !PL.length;
@@ -94,6 +94,15 @@
     $("insp-print").href = b.p;
     $("insp-print").setAttribute("aria-label", "Print the " + b.tr + " certificate (PDF)");
     try { history.replaceState(null, "", "#" + b.id); } catch (e) {}
+  }
+  function langLinks(s) {   // the same sheet in Arabic, Urdu and Bangla
+    var sp = document.createElement("span"); sp.className = "it-langs";
+    (s.tl || []).forEach(function (x) {
+      var a = document.createElement("a"); a.href = x[1]; a.target = "_blank"; a.rel = "noopener"; a.textContent = x[0];
+      a.setAttribute("aria-label", "Open this sheet in " + ({ "العربية": "Arabic", "اردو": "Urdu", "বাংলা": "Bangla" }[x[0]] || x[0]));
+      sp.appendChild(a);
+    });
+    return sp;
   }
   function pick() { var i; do { i = Math.floor(Math.random() * B.length); } while (B.length > 1 && i === cur); return i; }
 
