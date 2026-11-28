@@ -660,3 +660,4 @@ button.icount:focus-visible { outline: 3px solid var(--gold); outline-offset: 2p
 .it-langs { gap: 5px; flex-wrap: nowrap; }
 .it-langs a { padding: 0 9px; font-size: .86rem; min-height: 34px; white-space: nowrap; }
 @media (max-width: 21rem) { .it-langs { flex-wrap: wrap; } }
+.insp-top + .insp-quote { margin-top: 6px; margin-bottom: 4px; }
