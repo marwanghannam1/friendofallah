@@ -51,7 +51,7 @@
     $("insp-ways-h").textContent = b.tr === "Dhikr" ? "5 ways to remember Allah today" : "5 ways to reflect " + b.tr + " (" + b.en + ") today";
     WY.forEach(function (w) {
       var li = document.createElement("li"), tag = document.createElement("span"), p = document.createElement("p");
-      tag.className = "iw-area iw-" + w[0].toLowerCase().replace(/\s+/g, "-"); tag.textContent = w[0]; p.textContent = w[1];
+      tag.className = "iw-area iw-" + w[0].toLowerCase().replace(/\s+/g, "-"); tag.textContent = w[0] === "Work" ? "Work / School" : w[0]; p.textContent = w[1];
       li.appendChild(tag); li.appendChild(p); wol.appendChild(li);
     });
     $("insp-ways-box").hidden = !WY.length;
