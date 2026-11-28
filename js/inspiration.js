@@ -87,7 +87,7 @@
       a.textContent = "Open this sheet (page " + s.pg + ")"; d.appendChild(a); d.appendChild(langLinks(s));
       box.appendChild(d);
     });
-    $("insp-tasks").previousElementSibling.hidden = !PL.length;
+    document.querySelector(".insp-tasks-h").hidden = !PL.length; $("insp-tasks-note").hidden = !PL.length;
     text("insp-e", b.e); text("insp-r", b.r); $("insp-quote").hidden = !b.e;
     text("insp-ea", b.ea); $("insp-ea").hidden = !b.ea;   // the Arabic of the ayah or hadith
     paintTick(b);

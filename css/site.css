@@ -674,3 +674,9 @@ button.icount:focus-visible { outline: 3px solid var(--gold); outline-offset: 2p
    each task box keeps its own sheet link and language buttons */
 .insp-sheets-sec .isec-h, .insp-sheets-sec .isec-sub, .insp-sheets-sec > .insp-sec { display: none; }
 .insp-sheets-sec .insp-tasks-h { margin-top: 0; font-size: 1.3rem; }
+/* /inspiration: note under "What to do, as written in the sheets" (user, 28 Nov 2026) */
+.insp-tasks-note { margin: -2px 0 14px; padding: 12px 14px; border-radius: var(--radius-sm); background: rgba(244,213,141,.08); border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+  color: var(--parchment); font-size: .95rem; line-height: 1.55; text-align: left; }
+.insp-tasks-note b { color: var(--gold); }
+.insp-tasks-note a { color: var(--gold); text-underline-offset: 3px; }
+.insp-tasks-note[hidden] { display: none; }
